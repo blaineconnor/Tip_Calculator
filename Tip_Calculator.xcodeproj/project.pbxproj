@@ -29,6 +29,8 @@
 		F3E05F6C2B9594BF00708293 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F3E05F6B2B9594BF00708293 /* CombineCocoa */; };
 		F3E05F6F2B95954200708293 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = F3E05F6E2B95954200708293 /* SnapshotTesting */; };
 		F3E05F712B95955C00708293 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F3E05F702B95955C00708293 /* CombineCocoa */; };
+		F3F1803D2B974194001ABB46 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F1803C2B974194001ABB46 /* UIView+Extension.swift */; };
+		F3F1803F2B9758F5001ABB46 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F1803E2B9758F5001ABB46 /* AmountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		F3E05F512B95940400708293 /* Tip_CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tip_CalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E05F552B95940400708293 /* Tip_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip_CalculatorUITests.swift; sourceTree = "<group>"; };
 		F3E05F572B95940400708293 /* Tip_CalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip_CalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F3F1803C2B974194001ABB46 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F3F1803E2B9758F5001ABB46 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				F319E36F2B9703DC00A4F2AD /* BillInputView.swift */,
 				F319E3712B9703F200A4F2AD /* TipInputView.swift */,
 				F319E3732B97040500A4F2AD /* SplitInputView.swift */,
+				F3F1803E2B9758F5001ABB46 /* AmountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				F319E37B2B970D5400A4F2AD /* UIColor+Extension.swift */,
+				F3F1803C2B974194001ABB46 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -347,12 +353,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F1803F2B9758F5001ABB46 /* AmountView.swift in Sources */,
 				F3E05F392B95940300708293 /* CalculatorVC.swift in Sources */,
 				F319E36C2B97020000A4F2AD /* LogoView.swift in Sources */,
 				F319E3772B970CF800A4F2AD /* ThemeColor.swift in Sources */,
 				F319E37C2B970D5400A4F2AD /* UIColor+Extension.swift in Sources */,
 				F319E3702B9703DC00A4F2AD /* BillInputView.swift in Sources */,
 				F319E36E2B9703C800A4F2AD /* ResultView.swift in Sources */,
+				F3F1803D2B974194001ABB46 /* UIView+Extension.swift in Sources */,
 				F3E05F352B95940300708293 /* AppDelegate.swift in Sources */,
 				F319E3792B970D0D00A4F2AD /* ThemeFont.swift in Sources */,
 				F3E05F372B95940300708293 /* SceneDelegate.swift in Sources */,
