@@ -155,7 +155,7 @@ class TipInputView: UIView {
                 twentyPercentTipBtn.backgroundColor = ThemeColor.secondary
             case .custom(let value):
                 customTipBtn.backgroundColor = ThemeColor.secondary
-                let text = NSMutableAttributedString(string: "$\(value)", attributes: [.font: ThemeFont.bold(ofSize: 20)])
+                let text = NSMutableAttributedString(string: "₺\(value)", attributes: [.font: ThemeFont.bold(ofSize: 20)])
                 text.addAttributes([.font: ThemeFont.bold(ofSize: 14)], range: NSMakeRange(0, 1))
                 customTipBtn.setAttributedTitle(text, for: .normal)
             }

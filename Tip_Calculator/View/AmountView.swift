@@ -24,7 +24,7 @@ class AmountView: UIView {
         let label = UILabel()
         label.textAlignment = textAlignment
         label.textColor = ThemeColor.primary
-        let text = NSMutableAttributedString(string: "$0", attributes: [
+        let text = NSMutableAttributedString(string: "₺0", attributes: [
             .font : ThemeFont.bold(ofSize: 24)
         ])
         text.addAttributes([

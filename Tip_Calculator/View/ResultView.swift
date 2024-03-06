@@ -16,7 +16,7 @@ class ResultView: UIView {
     private let amountPerPersonLbl: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        let text = NSMutableAttributedString(string: "$0", attributes: [
+        let text = NSMutableAttributedString(string: "₺0", attributes: [
             .font: ThemeFont.bold(ofSize: 48)
         ])
         text.addAttributes([
@@ -45,12 +45,12 @@ class ResultView: UIView {
     }()
     
     private let totalBillView: AmountView = {
-        let view = AmountView(title: "Total bill", textAlignment: .left) 
+        let view = AmountView(title: "Toplam hesap", textAlignment: .left)
         return view
     }()
     
     private let totalTipView: AmountView = {
-        let view = AmountView(title: "Total tip", textAlignment: .right)
+        let view = AmountView(title: "Toplam bahşiş", textAlignment: .right)
         return view
     }()
     
