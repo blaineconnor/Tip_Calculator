@@ -10,7 +10,7 @@ import UIKit
 class LogoView: UIView{
     
     private let imageView: UIImageView = {
-        let view = UIImageView(image: .init(named: "AppIcon"))
+        let view = UIImageView(image: .init(named: "tipCalc"))
         view.contentMode = .scaleAspectFit
         return view
     }()
