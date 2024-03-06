@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import CombineCocoa
 
 class SplitInputView: UIView {
     
@@ -17,11 +19,19 @@ class SplitInputView: UIView {
     
     private lazy var decrementBtn: UIButton = {
         let btn = buildBtn(text: "-", corners: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
+        btn.tapPublisher.flatMap { [unowned self] _ in
+            Just(splitSubject.value == 1 ? 1 : splitSubject.value - 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: &cancellable)
         return btn
     }()
     
     private lazy var incrementBtn: UIButton = {
         let btn = buildBtn(text: "+", corners: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner])
+        btn.tapPublisher.flatMap { [unowned self] _ in
+            Just(splitSubject.value + 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: &cancellable)
         return btn
     }()
     
@@ -40,14 +50,26 @@ class SplitInputView: UIView {
         stackView.spacing = 0
         return stackView
     }()
+    
+    private let splitSubject: CurrentValueSubject<Int, Never> = .init(1)
+    var valuePublisher: AnyPublisher<Int, Never> {
+        return splitSubject.removeDuplicates().eraseToAnyPublisher()
+    }
+    
+    private var cancellable = Set<AnyCancellable>()
 
     init() {
         super.init(frame: .zero)
         layout()
+        observe()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func reset() {
+        splitSubject.send(1)
     }
     
     private func layout() {
@@ -69,6 +91,12 @@ class SplitInputView: UIView {
             make.trailing.equalTo(stackView.snp.leading).offset(-24)
             make.width.equalTo(68)
         }
+    }
+    
+    private func observe() {
+        splitSubject.sink { [unowned self] quantity in
+            quantityLbl.text = quantity.stringValue
+        }.store(in: &cancellable)
     }
     
     private func buildBtn(text: String, corners: CACornerMask) -> UIButton{
