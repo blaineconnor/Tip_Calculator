@@ -37,6 +37,7 @@ class AmountView: UIView {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, amountLabel])
         stackView.axis = .vertical
+        stackView.spacing = -5
         return stackView
     }()
     

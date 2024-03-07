@@ -45,12 +45,12 @@ class ResultView: UIView {
     }()
     
     private let totalBillView: AmountView = {
-        let view = AmountView(title: "Toplam hesap", textAlignment: .left)
+        let view = AmountView(title: "Total bill", textAlignment: .left)
         return view
     }()
     
     private let totalTipView: AmountView = {
-        let view = AmountView(title: "Toplam bahşiş", textAlignment: .right)
+        let view = AmountView(title: "Total tip", textAlignment: .right)
         return view
     }()
     

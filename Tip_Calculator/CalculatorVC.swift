@@ -28,7 +28,7 @@ class CalculatorVC: UIViewController {
             UIView()
         ])
         stackView.axis = .vertical
-        stackView.spacing = 36
+        stackView.distribution = .equalSpacing
         return stackView
     }()
     
@@ -99,7 +99,7 @@ class CalculatorVC: UIViewController {
         view.backgroundColor = ThemeColor.bg
         
         
-        vStackView.snp.makeConstraints {make in
+        vStackView.snp.makeConstraints { make in
             make.leading.equalTo(view.snp.leadingMargin).offset(16)
             make.trailing.equalTo(view.snp.trailingMargin).offset(-16)
             make.bottom.equalTo(view.snp.bottomMargin).offset(-16)
@@ -107,23 +107,23 @@ class CalculatorVC: UIViewController {
         }
         
         logoView.snp.makeConstraints{ make in
-            make.height.equalTo(48)
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
         }
         
         resultView.snp.makeConstraints{ make in
-            make.height.equalTo(224)
+            make.height.equalTo(view.snp.height).multipliedBy(0.3)
         }
         
         billInputView.snp.makeConstraints{ make in
-            make.height.equalTo(56)
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
         }
         
         tipInputView.snp.makeConstraints{ make in
-            make.height.equalTo(56+56+16)
+            make.height.equalTo(view.snp.height).multipliedBy(0.2)
         }
         
         splitInputView.snp.makeConstraints{ make in
-            make.height.equalTo(56)
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
         }
     }
     
