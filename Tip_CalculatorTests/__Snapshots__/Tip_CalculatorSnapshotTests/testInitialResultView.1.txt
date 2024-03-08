@@ -1,0 +1,1 @@
+<Tip_Calculator.ResultView: 0x10b067a60; frame = (0 0; 0 0); backgroundColor = UIExtendedGrayColorSpace 1 1; layer = <CALayer: 0x6000002a85c0>>

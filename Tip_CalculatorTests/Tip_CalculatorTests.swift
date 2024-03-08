@@ -32,9 +32,9 @@ final class Tip_CalculatorTests: XCTestCase {
         audioPlayerService = nil
         logoViewTapSub = nil
     }
-
+    
     //EN: One person without tip --- TR: Bahşiş vermeden tek kişilik hesap
-    func testResultWithoutTipFor1Person(){
+    func testResultWithoutTipFor1Person() {
         // given
         let bill: Double = 100.0
         let tip: Tip = .none
@@ -55,7 +55,7 @@ final class Tip_CalculatorTests: XCTestCase {
     // - 1 person
     
     //EN: Two people without tip --- TR: Bahşiş vermeden iki kişilik hesap
-    func testResultWithoutTipFor2People(){
+    func testResultWithoutTipFor2People() {
         // given
         let bill: Double = 100.0
         let tip: Tip = .none
@@ -72,7 +72,7 @@ final class Tip_CalculatorTests: XCTestCase {
     }
     
     //EN: Two people %10 tip --- TR: %10 bahşişle iki kişilik hesap
-    func testResultWith10PercentTipFor2People(){
+    func testResultWith10PercentTipFor2People() {
         // given
         let bill: Double = 100.0
         let tip: Tip = .tenPercent
@@ -89,7 +89,7 @@ final class Tip_CalculatorTests: XCTestCase {
     }
     
     //EN: Four people custom tip --- TR: Özel bahşiş dört kişilik hesap
-    func testResultWithCustomtipFor4People(){
+    func testResultWithCustomtipFor4People() {
         // given
         let bill: Double = 200.0
         let tip: Tip = .custom(value: 201)
@@ -106,11 +106,11 @@ final class Tip_CalculatorTests: XCTestCase {
     }
     
     //EN: Calculator reset and sound test when logo tapped--- TR: Logoya tıklandığında hesap sıfırlama ve ses çıkışı
-    func testSoundPlayedAndCalculatorResetOnLogoViewTap(){
+    func testSoundPlayedAndCalculatorResetOnLogoViewTap() {
         //given
         let input = buildInput(bill: 100, tip: .tenPercent, split: 2)
         let output = sut.transform(input: input)
-       let expectation1 = XCTestExpectation(description: "reset calculator called")
+        let expectation1 = XCTestExpectation(description: "reset calculator called")
         let expectation2 = audioPlayerService.expectation
         //then
         output.resetCalculatorPublisher.sink { _ in
