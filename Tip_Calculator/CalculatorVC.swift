@@ -38,19 +38,12 @@ class CalculatorVC: UIViewController {
     private lazy var viewTapPublisher: AnyPublisher<Void, Never> = {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
         view.addGestureRecognizer(tapGesture)
-         return tapGesture.tapPublisher.flatMap{ _ in
+         return tapGesture.tapPublisher.flatMap{ [weak self] _ in
             Just(())
          }.eraseToAnyPublisher()
     }()
     
-    private lazy var logoViewTapPublisher: AnyPublisher<Void, Never> = {
-        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
-        tapGesture.numberOfTapsRequired = 2
-        logoView.addGestureRecognizer(tapGesture)
-         return tapGesture.tapPublisher.flatMap{ _ in
-            Just(())
-         }.eraseToAnyPublisher()
-    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +57,8 @@ class CalculatorVC: UIViewController {
         let input = CalculatorVM.Input(
             billPublisher: billInputView.valuePublisher,
             tipPublisher: tipInputView.valuePublisher,
-            splitPublisher: splitInputView.valuePublisher, logoViewTapPublisher: logoViewTapPublisher)
+            splitPublisher: splitInputView.valuePublisher, 
+            logoViewTapPublisher: logoView.logoViewTapPublisher)
         
         let output = vm.transform(input: input)
         
@@ -80,7 +74,7 @@ class CalculatorVC: UIViewController {
             UIView.animate(withDuration: 0.1, delay: 0.1, usingSpringWithDamping: 5.0, initialSpringVelocity: 0.5,
                            options: .curveEaseInOut) {
                 self.logoView.transform = .init(scaleX: 1.5, y: 1.5 )
-            } completion: { _ in
+            } completion: { [unowned self] _ in
                 UIView.animate(withDuration: 0.1, delay: 0.1) {
                     self.logoView.transform = .identity
                 }
@@ -126,7 +120,4 @@ class CalculatorVC: UIViewController {
             make.height.equalTo(view.snp.height).multipliedBy(0.1)
         }
     }
-    
-    
 }
-

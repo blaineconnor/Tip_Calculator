@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class LogoView: UIView{
     
@@ -50,6 +51,15 @@ class LogoView: UIView{
         view.spacing = 8
         view.alignment = .center
         return view
+    }()
+    
+    lazy var logoViewTapPublisher: AnyPublisher<Void, Never> = { [weak self] in
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.numberOfTapsRequired = 2
+        self?.addGestureRecognizer(tapGesture)
+         return tapGesture.tapPublisher.flatMap{ [weak self] _ in
+            Just(())
+         }.eraseToAnyPublisher()
     }()
     
     

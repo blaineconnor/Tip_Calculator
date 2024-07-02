@@ -43,7 +43,7 @@ class CalculatorVM{
             .logoViewTapPublisher
             .handleEvents(receiveOutput: {[unowned self] in
             audioPlayerService.playSound()
-        }).flatMap {
+        }).flatMap { [unowned self] in
             return Just(())
         }.eraseToAnyPublisher()
         
