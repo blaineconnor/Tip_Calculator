@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 import CombineCocoa
+import SwiftUI
 
 class CalculatorVC: UIViewController {
     
@@ -43,8 +44,6 @@ class CalculatorVC: UIViewController {
          }.eraseToAnyPublisher()
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
@@ -57,7 +56,7 @@ class CalculatorVC: UIViewController {
         let input = CalculatorVM.Input(
             billPublisher: billInputView.valuePublisher,
             tipPublisher: tipInputView.valuePublisher,
-            splitPublisher: splitInputView.valuePublisher, 
+            splitPublisher: splitInputView.valuePublisher,
             logoViewTapPublisher: logoView.logoViewTapPublisher)
         
         let output = vm.transform(input: input)
@@ -92,7 +91,6 @@ class CalculatorVC: UIViewController {
         view.addSubview(vStackView)
         view.backgroundColor = ThemeColor.bg
         
-        
         vStackView.snp.makeConstraints { make in
             make.leading.equalTo(view.snp.leadingMargin).offset(16)
             make.trailing.equalTo(view.snp.trailingMargin).offset(-16)
@@ -119,5 +117,21 @@ class CalculatorVC: UIViewController {
         splitInputView.snp.makeConstraints{ make in
             make.height.equalTo(view.snp.height).multipliedBy(0.1)
         }
+    }
+}
+
+struct CalculatorViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> CalculatorVC {
+        return CalculatorVC()
+    }
+
+    func updateUIViewController(_ uiViewController: CalculatorVC, context: Context) {
+    }
+}
+
+struct CalculatorViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        CalculatorViewControllerRepresentable()
+            .edgesIgnoringSafeArea(.all)
     }
 }
